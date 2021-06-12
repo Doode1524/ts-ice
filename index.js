@@ -4,8 +4,7 @@ var mealsDetails = document.getElementById('meals-details');
 var searchForm = document.getElementById('search-form');
 var URL = "https://www.themealdb.com/api/json/v1/1/";
 var fetchMeals = function (e) {
-    e.preventDefault();
-    mealsList.innerHTML = "";
+    e.preventDefault()(mealsList).innerHTML = "";
     mealsDetails.innerHTML = "";
     var query = e.target[0].value;
     fetch(URL + "search.php?s=" + query)
@@ -23,9 +22,7 @@ var renderMeal = function (meal) {
 };
 var fetchMeal = function (e) {
     e.preventDefault();
-    var mealId = e.target.value;
-    mealsList.innerHTML = "";
-    mealsDetails.innerHTML = "";
+    var mealId = e.target.value(mealsList).innerHTML = ""(mealsDetails).innerHTML = "";
     fetch(URL + "lookup.php?i=" + mealId)
         .then(function (resp) { return resp.json(); })
         .then(function (data) {

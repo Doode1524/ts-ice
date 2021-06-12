@@ -5,8 +5,8 @@ const URL = "https://www.themealdb.com/api/json/v1/1/"
 
 const fetchMeals = (e) => {
     e.preventDefault()
-    mealsList.innerHTML = ""
-    mealsDetails.innerHTML = ""
+    (mealsList as Element).innerHTML = "";
+    (mealsDetails as Element).innerHTML = ""
     let query = e.target[0].value
     
     fetch(`${URL}search.php?s=${query}`)
@@ -15,10 +15,10 @@ const fetchMeals = (e) => {
       data.meals.map(meal => renderMeal(meal))
     })
 }
-searchForm.addEventListener('submit', fetchMeals)
+(searchForm as Element).addEventListener('submit', fetchMeals)
 
-const renderMeal = (meal) => {
-    mealsList.innerHTML += 
+const renderMeal = (meal: any) => {
+    (mealsList as Element).innerHTML += 
     `
     <li>${meal.strMeal}
     <button id="recipe-details"value=${meal.idMeal}>Details</button>
@@ -31,8 +31,8 @@ const renderMeal = (meal) => {
 const fetchMeal = (e) => {
     e.preventDefault()
     let mealId = e.target.value
-    mealsList.innerHTML = ""
-    mealsDetails.innerHTML = ""
+    (mealsList as Element).innerHTML = ""
+    (mealsDetails as Element).innerHTML = ""
 
     fetch(`${URL}lookup.php?i=${mealId}`)
     .then(resp => resp.json())
@@ -41,8 +41,8 @@ const fetchMeal = (e) => {
     })
 }
 
-const renderMealDetails = (meal) => {
-    mealsDetails.innerHTML = 
+const renderMealDetails = (meal: any) => {
+    (mealsDetails as Element).innerHTML = 
     `
     <h3>${meal.strMeal}</h3>
     <p>${meal.strInstructions}</p>
